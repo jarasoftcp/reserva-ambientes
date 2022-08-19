@@ -2058,20 +2058,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {
         nombre: null,
         direccion: null,
-        color: null
+        color: "N/A"
       },
       errors: {}
     };
@@ -2335,7 +2328,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.obtenerAmbientes();
-    this.$bus.$emit('cambiarTextoTitulo', 'Lista de Ambientes');
+    this.$bus.$emit('cambiarTextoTitulo', 'Lista de Personal');
 
     if (User.isAdministrator()) {
       this.loggin = true;
@@ -2685,7 +2678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      titulo: 'Reserva Ambientes',
+      titulo: 'Reserva Personal',
       usuario: null,
       menu: {
         listaUsuario: false,
@@ -2800,30 +2793,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2850,20 +2819,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.$bus.$emit('cambiarTextoTitulo', 'Login');
+    this.$bus.$emit("cambiarTextoTitulo", "Login");
   },
   computed: {
     emailErrors: function emailErrors() {
       var errors = [];
       if (!this.$v.form.email.$dirty) return errors;
-      !this.$v.form.email.email && errors.push('Debe ser un email valido');
-      !this.$v.form.email.required && errors.push('Email es requerido');
+      !this.$v.form.email.email && errors.push("Debe ser un email valido");
+      !this.$v.form.email.required && errors.push("Email es requerido");
       return errors;
     },
     passwordErrors: function passwordErrors() {
       var errors = [];
       if (!this.$v.form.password.$dirty) return errors;
-      !this.$v.form.password.required && errors.push('Password es requerido.');
+      !this.$v.form.password.required && errors.push("Password es requerido.");
       return errors;
     }
   },
@@ -2873,13 +2842,13 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$v.form.$touch();
       if (this.$v.form.$error) return;
-      axios.post('/api/auth/login', this.form).then(function (res) {
+      axios.post("/api/auth/login", this.form).then(function (res) {
         User.resposeAfterLogin(res);
 
-        _this.$bus.$emit('logged', 'User logged');
+        _this.$bus.$emit("logged", "User logged");
 
         _this.$router.push({
-          path: 'lista-ambientes'
+          path: "lista-ambientes"
         }); //window.location.reload()
 
       }).catch(function (error) {
@@ -59240,7 +59209,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n      Reserva de Ambientes https://www.youtube.com/casiprogramador\n    "
+                    "\n      © Copyright Grupo DMI 2022 - TI Software Department\n    "
                   )
                 ]
               )
@@ -59360,7 +59329,7 @@ var render = function() {
                       _c(
                         "h3",
                         { staticClass: "headline mb-0 text-md-center" },
-                        [_vm._v("Registro de Ambiente")]
+                        [_vm._v("Registro de Personal")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -59408,23 +59377,6 @@ var render = function() {
                               ])
                             : _vm._e(),
                           _vm._v(" "),
-                          _c("v-text-field", {
-                            attrs: { label: "Color", required: "" },
-                            model: {
-                              value: _vm.form.color,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "color", $$v)
-                              },
-                              expression: "form.color"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.color
-                            ? _c("span", { staticClass: "red--text" }, [
-                                _vm._v(_vm._s(_vm.errors.color[0]))
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "text-md-center" },
@@ -59432,7 +59384,7 @@ var render = function() {
                               _c(
                                 "v-btn",
                                 { attrs: { type: "submit", color: "primary" } },
-                                [_vm._v("Registrar Ambiente")]
+                                [_vm._v("Registrar Personal")]
                               )
                             ],
                             1
@@ -59671,10 +59623,7 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    {
-                      staticClass: "white--text",
-                      attrs: { color: ambiente.color }
-                    },
+                    { staticClass: "white--text", attrs: { color: "primary" } },
                     [
                       _c("v-card-title", { attrs: { "primary-title": "" } }, [
                         _c("div", [
@@ -60363,7 +60312,7 @@ var render = function() {
                         [
                           _c(
                             "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("Ambientes")])],
+                            [_c("v-list-tile-title", [_vm._v("Personal")])],
                             1
                           )
                         ],
@@ -60447,7 +60396,7 @@ var render = function() {
             ? _c(
                 "router-link",
                 { attrs: { to: "/lista-ambientes" } },
-                [_c("v-btn", { attrs: { flat: "" } }, [_vm._v("Ambientes")])],
+                [_c("v-btn", { attrs: { flat: "" } }, [_vm._v("Personal")])],
                 1
               )
             : _vm._e(),
@@ -60525,7 +60474,11 @@ var render = function() {
                       _c(
                         "h3",
                         { staticClass: "headline mb-0 text-md-center" },
-                        [_vm._v("Ingrese sus credenciales")]
+                        [
+                          _vm._v(
+                            "\n            Ingrese sus credenciales\n          "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _vm.error_login
@@ -60534,7 +60487,7 @@ var render = function() {
                             { attrs: { value: true, type: "warning" } },
                             [
                               _vm._v(
-                                "\r\n              Usuario o Password equivocado.\r\n            "
+                                "\n            Usuario o Password equivocado.\n          "
                               )
                             ]
                           )
@@ -105551,8 +105504,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\reserva-ambientes\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\reserva-ambientes\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\ProyectosLaravel\reservas\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\ProyectosLaravel\reservas\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

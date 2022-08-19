@@ -13,7 +13,7 @@
             <router-link to="/lista-ambientes" v-if="menu.listaAmbientes">
             <v-list-tile avatar>
               <v-list-tile-content>
-                <v-list-tile-title>Ambientes</v-list-tile-title>
+                <v-list-tile-title>Personal</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
             </router-link>
@@ -31,7 +31,7 @@
             </v-list-tile>
         </v-list>
     </v-menu>
-    
+
     <v-toolbar-title >
              {{titulo}}
       </v-toolbar-title>
@@ -42,7 +42,7 @@
       <v-btn flat>Usuarios</v-btn>
       </router-link>
       <router-link to="/lista-ambientes" v-if="menu.listaAmbientes">
-        <v-btn flat>Ambientes</v-btn>
+        <v-btn flat>Personal</v-btn>
       </router-link>
       <router-link to="/login" v-if="menu.ingresar">
         <v-btn flat>Ingresar</v-btn>
@@ -54,7 +54,7 @@
 <script>
   export default {
     data: () => ({
-      titulo: 'Reserva Ambientes',
+      titulo: 'Reserva Personal',
       usuario: null,
       menu: {
         listaUsuario: false,
@@ -100,7 +100,7 @@
                   this.menu.ingresar = false
                   this.menu.salir = true
                 }
-                
+
               }else{
                   this.menu.listaUsuario = false
                   this.menu.listaAmbientes = true

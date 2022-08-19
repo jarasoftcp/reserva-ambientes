@@ -11,7 +11,7 @@
       justify-center
       row
       wrap
-      
+
     >
       <v-flex
         py-3
@@ -19,7 +19,7 @@
         grey lighten-5
         xs12
       >
-        Reserva de Ambientes https://www.youtube.com/casiprogramador
+        © Copyright Grupo DMI 2022 - TI Software Department
       </v-flex>
     </v-layout>
   </v-footer>

@@ -7,7 +7,7 @@
       >
         <v-layout row wrap>
           <v-flex xs12 md3 v-for="ambiente in listaAmbientes" :key="ambiente.id">
-            <v-card :color="ambiente.color" class="white--text" >
+            <v-card color="primary" class="white--text" >
               <v-card-title primary-title>
                 <div>
                   <div class="headline">
@@ -19,7 +19,7 @@
               <v-divider ></v-divider>
               <v-card-actions>
                 <v-btn outline @click="verReserva(ambiente)" flat dark>Ver Reservas</v-btn>
-                
+
                 <v-btn outline @click="editarAmbiente(ambiente)" color="white" class="ml-4"  v-if="loggin">
                    Editar
                   </v-btn>
@@ -47,7 +47,7 @@
 
       <v-dialog v-model="dialogEdit" persistent max-width="400px">
       <v-card>
-        <v-card-title 
+        <v-card-title
         v-bind:class="[classEditModal.headline, classEditModal.colorFondo, classEditModal.colorText]">
           <span class="headline">Editar Ambiente</span>
         </v-card-title>
@@ -97,7 +97,7 @@ export default {
   },
   created: function () {
        this.obtenerAmbientes();
-       this.$bus.$emit('cambiarTextoTitulo', 'Lista de Ambientes')
+       this.$bus.$emit('cambiarTextoTitulo', 'Lista de Personal')
        if(User.isAdministrator()){
           this.loggin = true
       }else{
@@ -114,20 +114,20 @@ export default {
             .catch((error) => {
               this.errors = error.response.data.errors
             })
-            
+
         },
         verReserva(ambiente){
           if(User.loggedIn()){
             localStorage.ambiente_id = ambiente.id
             this.$bus.$emit('cambiarTextoTitulo', ambiente.nombre)
-            this.$router.push({ path: 'reserva' })  
+            this.$router.push({ path: 'reserva' })
           }else{
-            this.$router.push({ path: 'login' })  
+            this.$router.push({ path: 'login' })
           }
-          
+
         },
         nuevoAmbiente(){
-          this.$router.push({ path: 'registrar-ambiente' })  
+          this.$router.push({ path: 'registrar-ambiente' })
         },
 
         editarAmbiente(ambiente){
